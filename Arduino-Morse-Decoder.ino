@@ -10,10 +10,10 @@ void loop() {
 digitalWrite(ledPin, HIGH); // LOOP restarts
 
 //A0 = amount of signals
-if(001) //A0 = 1;
-if(010) //A0 = 2;
-if(011) //A0 = 3;
-if(100) //A0 = 4;
+if(00) //A0 = 1;
+if(01) //A0 = 2;
+if(10) //A0 = 3;
+if(11) //A0 = 4;
 
 if(A0 == && A1 == && A2 == && A3 == && A4 == && A5 == && A6 == ){ //A
   //prints A to display 
@@ -22,12 +22,12 @@ if(A0 == && A1 == && A2 == && A3 == && A4 == && A5 == && A6 == ){ //A
  
  
  /*
-switch(A0){ //Hur kan A0 vara 1,2,3,4
+switch(A0){ //A0 var räknad i början av loopen
   case 1:
       if(A1 == kort){ //print bokstav med en kort
         //print E
     }
-    else //print T
+    else //print T A1 == hög
   case 2:
   case 3:
   case 4:
