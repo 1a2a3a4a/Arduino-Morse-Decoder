@@ -263,7 +263,7 @@ void loop() {
         }
     }
    cursorColumn = cursorColumn + 1;
-   if(cursorColumn == Columns - 1){cursorRow = 1;}
+   if(cursorColumn == columns - 1){cursorRow = 1;}
   }
 
 }
