@@ -262,8 +262,11 @@ void loop() {
           lcd.print("9");
         }
     }
-   cursorColumn = cursorColumn + 1;
-   if(cursorColumn == columns - 1){cursorRow = 1;}
+   cursorColumn = cursorColumn + 1; //flytta pekaren ett steg framåt för att skriva nästa tecken
+   if(cursorColumn == columns + 1){ // byt till den undre raden
+      cursorRow = 1;
+      cursorColumn = 0;                                     
+   }
   }
 
 }
