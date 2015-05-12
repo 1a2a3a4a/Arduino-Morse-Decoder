@@ -60,7 +60,11 @@ void setCounter(){ // c0 = LSB, c2 = MSB  // use the arduino pins as arguments
 
 
 void loop() {
+
+  if (digitalRead(space)== HIGH || digitalRead(newLetter)== HIGH){ //checks if finished with letter or word   
+
   lcd.setCursor(cursorColumn, CursorRow);
+  
   setcounter(); //  from pins 2,3,4 on the arduino board, 2 is the LSB and 4 is MSB
 
   int A0 = analogRead(A0);
@@ -70,7 +74,6 @@ void loop() {
   int A4 = analogRead(A4);
   int A5 = analogRead(A5);
   
-  if (digitalRead(space)== HIGH || digitalRead(newLetter)== HIGH){ //checks if finished with letter or word
     
     switch(counter){ //counter was determined above, the number of signals in the letter
       case 0:
@@ -78,74 +81,87 @@ void loop() {
           //print E to the display then move pointer one step to next on the display
           Serial.print("E");
           lcd.print("E");
+          break;
         }
         else{
           //print T
           Serial.print("T");
           lcd.print("T");
+               break;
         }
       case 1:
         if(A1 == HIGH && A0 == LOW){
           //print A
           Serial.print("A");
           lcd.print("A");
+               break;
         }
         if{A1 == LOW && A0 == LOW){ 
           //print  I    
           Serial.print("I");
-          lcd.print("I");    
+          lcd.print("I");
+               break;
         }
         if(A1 == HIGH && A0 == HIGH){
           //print M 
           Serial.print("M");
           lcd.print("M");
+               break;
         }
         if{A1 == HIGH && A0 == LOW){
           //print N     
          Serial.print("N"); 
        lcd.print("N");  
+            break;
         } 
       case 2:
         if( A2 == HIGH && A1 ==  LOW && A0 == LOW){
           //print D  
           Serial.print("D");
           lcd.print("D");
+               break;
         }
         if( A2 == HIGH && A1 == HIGH && A0 == LOW){
           //print G   
           Serial.print("G");
           lcd.print("G");
+               break;
         }
         if( A2 == HIGH  && A1 == LOW  && A0 == HIGH){
           //print K
           Serial.print("K");
           lcd.print("K");
+               break;
         }
         if( A2 == HIGH && A1 == HIGH && A0 == HIGH){
           //print O  
           Serial.print("O");
           lcd.print("O");
+               break;
         }
         if( A2 == LOW && A1 == HIGH && A0 == LOW){
           //print R
           Serial.print("R");
           lcd.print("R");
+               break;
         }
         if( A2 == LOW && A1 == LOW && A0 == LOW){
           //print S
           Serial.print("S");
           lcd.print("S");
+               break;
         }
         if( A2 == LOW && A1 == LOW && A0 == HIGH){
           //print U 
           Serial.print("U");
           lcd.print("U");
+               break;
         }
         if( A2 ==LOW && A1 ==HIGH && A0 ==HIGH ){
           //print W
         Serial.print("W");
         lcd.print("W");  
-          
+               break;
         }
 
       case 3:
@@ -153,61 +169,73 @@ void loop() {
           //print B
           Serial.print("B");
           lcd.print("B");
+               break;
         }
         if(A3 == HIGH && A2 == LOW && A1 == HIGH  && A0 == LOW ){
           //print C
           Serial.print("C");
           lcd.print("C");
+               break;
         }
         if(A3 == LOW && A2 == LOW && A1 == HIGH  && A0 == LOW ){
           //print F
           Serial.print("F");
           lcd.print("F");
+               break;
         }
         if(A3 == LOW && A2 == LOW && A1 == LOW  && A0 == LOW ){
           //print H
           Serial.print("H");
           lcd.print("H");
+               break;
         }
         if(A3 == LOW && A2 == HIGH && A1 == HIGH && A0 == HIGH ){
           //print J
           Serial.print("J");
           lcd.print("J");
+               break;
         }
         if(A3 == LOW && A2 == HIGH && A1 == LOW  && A0 == LOW ){
           //print L
           Serial.print("L");
           lcd.print("L");
+               break;
         }
         if(A3 == LOW && A2 == HIGH && A1 == HIGH && A0 == LOW ){
           //print P
           Serial.print("P");
           lcd.print("P");
+               break;
         }
         if(A3 == HIGH && A2 == HIGH && A1 == LOW  && A0 == HIGH ){
           //print Q
           Serial.print("Q");
           lcd.print("Q");
+               break;
         }
         if(A3 == LOW && A2 == LOW && A1 == LOW  && A0 == HIGH ){
           //print V
           Serial.print("V");
           lcd.print("V");
+               break;
         }
         if(A3 == HIGH && A2 == LOW && A1 == LOW  && A0 == HIGH ){
           //print X
           Serial.print("X");
           lcd.print("X");
+               break;
         }
         if(A3 == HIGH && A2 == LOW && A1 ==HIGH  && A0 == HIGH ){
           //print Y
           Serial.print("Y");
           lcd.print("Y");
+               break;
         }
         if(A3 == HIGH && A2 == HIGH && A1 == LOW  && A0 == LOW ){
           //print Z
           Serial.print("Z");
           lcd.print("Z");
+               break;
         }
         
       case 4:
@@ -215,51 +243,61 @@ void loop() {
           //print 0
           Serial.print(0);
           lcd.print("0");
+               break;
         }
         if(A4 == LOW && A3 == HIGH && A2 == HIGH && A1 == HIGH  && A0 == HIGH ){
           //print 1
           Serial.print(1);
           lcd.print("1");
+               break;
         }
         if(A4 == LOW && A3 == LOW && A2 == HIGH && A1 == HIGH  && A0 == HIGH ){
           //print 2
           Serial.print(2);
           lcd.print("2");
+               break;
         }
         if(A4 == LOW && A3 == LOW && A2 == LOW && A1 == HIGH  && A0 == HIGH ){
           //print 3
           Serial.print(3);
           lcd.print("3");
+               break;
         }
         if(A4 == LOW && A3 == LOW && A2 == LOW && A1 == LOW  && A0 == HIGH ){
           //print 4
           Serial.print(4);
           lcd.print("4");
+               break;
         }
         if(A4 == LOW && A3 == LOW && A2 == LOW && A1 == LOW  && A0 == LOW ){
           //print 5
           Serial.print(5);
           lcd.print("5");
+               break;
         }
         if(A4 == HIGH && A3 == LOW && A2 == LOW && A1 == LOW  && A0 == LOW ){
           //print 6
           Serial.print(6);
           lcd.print("6");
+               break;
         }
         if(A4 == HIGH && A3 == HIGH && A2 == LOW && A1 == LOW  && A0 == LOW ){
           //print 7
           Serial.print(7);
           lcd.print("7");
+               break;
         }
         if(A4 == HIGH && A3 == HIGH && A2 == HIGH && A1 == LOW  && A0 == LOW ){
           //print 8
           Serial.print(8);
           lcd.print("8");
+               break;
         }
         if(A4 == HIGH && A3 == HIGH && A2 == HIGH && A1 == HIGH  && A0 == LOW ){
           //print 9
           Serial.print(9);
           lcd.print("9");
+               break;
         }
     }
    cursorColumn = cursorColumn + 1; //flytta pekaren ett steg framåt för att skriva nästa tecken
