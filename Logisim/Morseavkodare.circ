@@ -68,41 +68,27 @@ This file is intended to be loaded by Logisim (http://www.cburch.com/logisim/).
     <a name="clabel" val=""/>
     <a name="clabelup" val="east"/>
     <a name="clabelfont" val="SansSerif plain 12"/>
-    <wire from="(200,330)" to="(200,420)"/>
-    <wire from="(430,470)" to="(460,470)"/>
     <wire from="(290,330)" to="(290,400)"/>
-    <wire from="(240,330)" to="(240,350)"/>
+    <wire from="(290,400)" to="(330,400)"/>
     <wire from="(240,350)" to="(360,350)"/>
     <wire from="(240,380)" to="(260,380)"/>
-    <wire from="(290,400)" to="(320,400)"/>
-    <wire from="(250,420)" to="(250,450)"/>
+    <wire from="(330,320)" to="(340,320)"/>
     <wire from="(280,320)" to="(280,330)"/>
-    <wire from="(320,480)" to="(380,480)"/>
-    <wire from="(350,450)" to="(350,460)"/>
+    <wire from="(240,320)" to="(240,350)"/>
     <wire from="(280,450)" to="(350,450)"/>
     <wire from="(310,220)" to="(310,310)"/>
+    <wire from="(240,320)" to="(270,320)"/>
     <wire from="(280,330)" to="(280,450)"/>
+    <wire from="(230,450)" to="(280,450)"/>
     <wire from="(350,330)" to="(350,450)"/>
     <wire from="(260,380)" to="(260,400)"/>
-    <wire from="(230,450)" to="(250,450)"/>
-    <wire from="(200,420)" to="(250,420)"/>
-    <wire from="(250,450)" to="(280,450)"/>
-    <wire from="(330,400)" to="(460,400)"/>
     <wire from="(430,220)" to="(430,310)"/>
-    <wire from="(220,270)" to="(260,270)"/>
-    <wire from="(260,270)" to="(260,300)"/>
-    <wire from="(460,400)" to="(460,470)"/>
     <wire from="(370,310)" to="(430,310)"/>
-    <wire from="(330,300)" to="(330,400)"/>
     <wire from="(350,320)" to="(350,330)"/>
-    <wire from="(320,400)" to="(320,480)"/>
     <wire from="(360,330)" to="(360,350)"/>
-    <wire from="(220,270)" to="(220,280)"/>
+    <wire from="(330,320)" to="(330,400)"/>
     <wire from="(150,400)" to="(260,400)"/>
     <wire from="(300,310)" to="(310,310)"/>
-    <wire from="(350,460)" to="(380,460)"/>
-    <wire from="(330,300)" to="(340,300)"/>
-    <wire from="(260,300)" to="(270,300)"/>
     <wire from="(260,400)" to="(290,400)"/>
     <comp lib="0" loc="(230,450)" name="Clock"/>
     <comp lib="1" loc="(240,350)" name="NOT Gate">
@@ -114,13 +100,9 @@ This file is intended to be loaded by Logisim (http://www.cburch.com/logisim/).
       <a name="width" val="4"/>
       <a name="labelloc" val="east"/>
     </comp>
-    <comp lib="1" loc="(430,470)" name="AND Gate"/>
     <comp lib="4" loc="(370,310)" name="Counter">
       <a name="width" val="4"/>
       <a name="max" val="0xf"/>
-    </comp>
-    <comp lib="1" loc="(220,280)" name="AND Gate">
-      <a name="facing" val="north"/>
     </comp>
     <comp lib="0" loc="(430,220)" name="Pin">
       <a name="facing" val="south"/>
@@ -1216,5 +1198,17 @@ This file is intended to be loaded by Logisim (http://www.cburch.com/logisim/).
       <a name="fanout" val="4"/>
       <a name="incoming" val="4"/>
     </comp>
+  </circuit>
+  <circuit name="Arduino">
+    <a name="circuit" val="Arduino"/>
+    <a name="clabel" val=""/>
+    <a name="clabelup" val="east"/>
+    <a name="clabelfont" val="SansSerif plain 12"/>
+    <wire from="(360,280)" to="(360,330)"/>
+    <wire from="(230,280)" to="(360,280)"/>
+    <wire from="(370,320)" to="(440,320)"/>
+    <wire from="(360,330)" to="(440,330)"/>
+    <comp loc="(210,230)" name="Main"/>
+    <comp lib="5" loc="(440,330)" name="TTY"/>
   </circuit>
 </project>
