@@ -9,14 +9,14 @@ int newLetter = 5; //newletter or not
 int counter0 = 2; //LSB
 int counter1 = 3; // 2nd
 int counter2 = 4; //MSB
-int clock = 8;
+int clock = A5;
 bool clockHigh = false;
 bool clockTicked = false;
 
 
 
-int columns = 0; //number of columns on the display
-int rows = 0; //number of rows on the display
+int columns = 8; //number of columns on the display
+int rows = 2; //number of rows on the display
 
 int cursorRow = 0;
 int cursorColumn = 0;
@@ -37,6 +37,8 @@ void setup() {
   pinMode(A4, INPUT); //x4
   
   lcd.begin(columns, rows);
+
+
   
 }
 
@@ -62,7 +64,6 @@ void setCounter(){ // c0 = LSB, c2 = MSB  // use the arduino pins as arguments
 }
 
 void printCharacter() {
-  Serial.println("NU ska vi skriva en bokstav! :)");
   int analog0 = digitalRead(A0);
   int analog1 = digitalRead(A1);
   int analog2 = digitalRead(A2);
@@ -83,7 +84,7 @@ void printCharacter() {
       break;
     }
   case 1:
-    if(analog1 == HIGH && analog0 == LOW){
+    if(analog1 == LOW && analog0 == HIGH){
       //print A
       Serial.print("A");
       lcd.print("A");
@@ -295,43 +296,69 @@ void printCharacter() {
   }
 }
 
+void handleCursor() {
+  if (moveCursor) {
+    cursorColumn = cursorColumn + 1; //flytta pekaren ett steg framåt för att skriva nästa tecken
+  }
+    
+  if(cursorColumn >= columns + 1){ // byt rad
+    if (cursorRow == 0) { //rad 0
+      cursorRow = 1;
+      cursorColumn = 0;                                     
+    }
+    else { //rad 1
+      cursorRow = 0;
+      cursorColumn = 0;
+      lcd.setCursor(cursorColumn, cursorRow);
+      lcd.print("        ");
+      cursorRow = 0;
+      cursorColumn = 0;
+      lcd.setCursor(cursorColumn, cursorRow);
+    }
+  }
+}
+
 void loop() {
   int clockValue = digitalRead(clock);
-  //Serial.println("Read clock");
 
   if (clockValue) {
 
     if (clockTicked == false) {
       clockTicked = true;
-      if (digitalRead(space)== HIGH){ //checks if space is sent   
+  
 	if (digitalRead(newLetter) == HIGH) { //checks if we should read from A0-A5
 
 	  lcd.setCursor(cursorColumn, cursorRow);
+          Serial.print("cursorColumn:");
+          Serial.print(cursorColumn);
+          Serial.print("\t");
+          Serial.print("cursorRow:");
+          Serial.print(cursorRow);          
+          Serial.print("\t");
+          
 	  moveCursor = true;
 
 	  setCounter(); //  from pins 2,3,4 on the arduino board, 2 is the LSB and 4 is MSB
      
           printCharacter();
-	  
+          if (digitalRead(space)== HIGH){ //checks if space is sent 
+            lcd.print(" ");
+            cursorColumn = cursorColumn + 1;
+          }
+          handleCursor();
 	}
-	else { //if space is HIGH and newLetter is LOW, print ? and don't move the cursor. 
-	  //print ?
-	  Serial.print("?");
-	  lcd.print("?");
-	  //moveCursor = false;
-	}
-    
-    
-	if (moveCursor) {
-	  cursorColumn = cursorColumn + 1; //flytta pekaren ett steg framåt för att skriva nästa tecken
-	}
-    
-    
-	if(cursorColumn == columns + 1){ // byt till den undre raden
-	  cursorRow = 1;
-	  cursorColumn = 0;                                     
-	}
+        else { //if space is HIGH and newLetter is LOW, print ? and don't move the cursor. 
+          if (digitalRead(space) == HIGH) {
+	    //print ?
+	    lcd.setCursor(cursorColumn, cursorRow);
+	    Serial.print("?");
+            
+	    lcd.print("?"); 
+
+          }
+
       }
+
     }
   }
   else {
