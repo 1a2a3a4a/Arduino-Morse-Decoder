@@ -12,6 +12,8 @@ int counter2 = 4; //MSB
 int clock = A5;
 bool clockHigh = false;
 bool clockTicked = false;
+bool send = false;
+bool firstTime = true;
 
 
 
@@ -323,11 +325,13 @@ void handleCursor() {
 }
 
 void loop() {
-  int clockValue = digitalRead(clock);
+  
+  send = digitalRead(newLetter);
 
-  if (clockValue) {
+  if (send) {
 
     if (clockTicked == false) {
+      Serial.println("Nu ska vi skriva!");
       clockTicked = true;
   
 	if (digitalRead(newLetter) == HIGH) { //checks if we should read from A0-A5
@@ -348,6 +352,7 @@ void loop() {
 	    lcd.setCursor(cursorColumn, cursorRow);
 	    Serial.print("?");
 	    lcd.print("?"); 
+            lcd.setCursor(cursorColumn, cursorRow);
 
 
           }
@@ -357,7 +362,7 @@ void loop() {
     }
   }
   else {
-    clockTicked = false; 
+    clockTicked = false;
   }
 }
 
