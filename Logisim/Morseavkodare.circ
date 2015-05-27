@@ -266,7 +266,6 @@ This file is intended to be loaded by Logisim (http://www.cburch.com/logisim/).
       <a name="width" val="4"/>
     </comp>
     <comp loc="(320,320)" name="Komparator (konstant: 2)"/>
-    <comp lib="4" loc="(650,520)" name="Counter"/>
     <comp lib="1" loc="(380,160)" name="AND Gate">
       <a name="facing" val="north"/>
       <a name="inputs" val="2"/>

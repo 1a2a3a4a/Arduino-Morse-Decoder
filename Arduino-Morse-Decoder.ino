@@ -14,6 +14,7 @@ bool clockHigh = false;
 bool clockTicked = false;
 bool send = false;
 bool firstTime = true;
+int readSpace = 0;
 
 
 
@@ -325,10 +326,12 @@ void handleCursor() {
 }
 
 void loop() {
-  
+  readSpace = digitalRead(space);
   send = digitalRead(newLetter);
-
-  if (send) {
+  if (digitalRead(clock) == HIGH) {
+     firstTime = false; 
+  }
+  if ((send && !firstTime) || readSpace == HIGH) {
 
     if (clockTicked == false) {
       Serial.println("Nu ska vi skriva!");
@@ -341,7 +344,7 @@ void loop() {
           cursorColumn += 1;
           handleCursor();
 
-          if (digitalRead(space)== HIGH){ //checks if space is sent 
+          if (digitalRead(space) == HIGH){ //checks if space is sent 
             lcd.print(" ");
           }
           
